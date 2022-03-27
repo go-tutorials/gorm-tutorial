@@ -18,29 +18,29 @@ import (
 
 type ApplicationContext struct {
 	Health *health.Handler
-	User   UserHandler
+	User   *UserHandler
 }
 
 func NewApp(ctx context.Context, conf Config) (*ApplicationContext, error) {
-	gormDB, err := gorm.Open(g.Open(conf.Sql.DataSourceName), &gorm.Config{})
+	ormDB, err := gorm.Open(g.Open(conf.Sql.DataSourceName), &gorm.Config{})
 	if err != nil {
 		return nil, err
 	}
-	gormDB.AutoMigrate(&User{})
-	db, err := gormDB.DB()
+	ormDB.AutoMigrate(&User{})
+	db, err := ormDB.DB()
 	if err != nil {
 		return nil, err
 	}
+	logError := log.ErrorMsg
 
 	userType := reflect.TypeOf(User{})
-	userQueryBuilder := query.NewBuilder(db, "users", userType)
-	userSearchBuilder, err := q.NewSearchBuilder(db, userType, userQueryBuilder.BuildQuery)
+	userQuery := query.UseQuery(db, "users", userType)
+	userSearchBuilder, err := q.NewSearchBuilder(db, userType, userQuery)
 	if err != nil {
 		return nil, err
 	}
-
-	userService := NewUserService(gormDB)
-	userHandler := NewUserHandler(userSearchBuilder.Search, userService, log.ErrorMsg)
+	userService := NewUserService(ormDB)
+	userHandler := NewUserHandler(userSearchBuilder.Search, userService, logError)
 
 	sqlChecker := q.NewHealthChecker(db)
 	healthHandler := health.NewHandler(sqlChecker)
