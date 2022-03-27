@@ -4,6 +4,16 @@
 ```shell
 go run main.go
 ```
+## Architecture
+### Layer Architecture
+![Layer Architecture](https://camo.githubusercontent.com/9e6cc2c2ba28fc3797cb6c4a045c6b1abe8b5833f6bc0f8edde64ca7c070e922/68747470733a2f2f63646e2d696d616765732d312e6d656469756d2e636f6d2f6d61782f3830302f312a41456a4a364e4b7167595a4437364f345465644c63772e706e67)
+
+### Layer Architecture with standard features: health check, logging, config
+![Layer Architecture with standard features: health check, logging, config](https://camo.githubusercontent.com/a055d1d774cf0415b0ef5aeba4e8424850b8dd7960222c480cbc6d83ba8f2353/68747470733a2f2f63646e2d696d616765732d312e6d656469756d2e636f6d2f6d61782f3830302f312a65374b676e50597a6f344e48717a4f43316752344f772e706e67)
+
+### Architecture of Tutorial
+Based on the layer architecture, we simplify the architecture for this tutorial
+![Architecture of tutorial](https://camo.githubusercontent.com/1e6f9644c061b745a605cd319a238c2f954ab71ce244fafb4ccc4a53825dc913/68747470733a2f2f63646e2d696d616765732d312e6d656469756d2e636f6d2f6d61782f3830302f312a58345f476b4171743667706e473764586f504e7341672e706e67)
 
 ## API Design
 ### Common HTTP methods
