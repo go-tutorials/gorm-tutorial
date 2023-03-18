@@ -6,7 +6,7 @@ import (
 	"github.com/core-go/config"
 	"github.com/core-go/log"
 	mid "github.com/core-go/log/middleware"
-	sv "github.com/core-go/service"
+	sv "github.com/core-go/core"
 	"github.com/gorilla/mux"
 
 	"go-service/internal/app"

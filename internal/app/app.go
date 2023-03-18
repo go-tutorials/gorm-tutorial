@@ -31,7 +31,7 @@ func NewApp(ctx context.Context, conf Config) (*ApplicationContext, error) {
 	if err != nil {
 		return nil, err
 	}
-	logError := log.ErrorMsg
+	logError := log.LogError
 
 	userType := reflect.TypeOf(User{})
 	userQuery := query.UseQuery(db, "users", userType)
